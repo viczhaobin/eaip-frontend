@@ -4,10 +4,9 @@ import { defineConfig } from "vite"
 
 // https://vite.dev/config/
 export default defineConfig({
-  // 必须使用绝对路径 `/`：React Router 采用 History 路由，
-  // 如果 base 用 `./`，深层路由刷新时浏览器会把 ./assets/... 解析到错误路径，
-  // 命中 nginx 的 SPA 回退返回 index.html（text/html），导致 JS/CSS 报 MIME 类型错误、页面空白。
-  base: '/',
+  // 必须使用绝对路径 base：React Router 采用 History 路由，base 用 `./` 会导致深层路由刷新 MIME 错误。
+  // 本地开发用 `/`；GitHub Pages 项目页挂在 /eaip-frontend/ 子路径，用 GH_PAGES=1 构建时切换。
+  base: process.env.GH_PAGES ? '/eaip-frontend/' : '/',
   plugins: [react()],
   server: {
     port: 3000,
