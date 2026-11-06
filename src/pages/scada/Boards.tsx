@@ -54,7 +54,10 @@ export default function Boards() {
 
               <div className="mt-4 flex gap-2">
                 <Button variant="outline" size="sm" className="h-7 flex-1 text-xs"
-                  onClick={() => toast.info('看板投屏为只读展示入口，按展示策略校验访问')}>
+                  onClick={() => {
+                    if (b.boardId === 'BD03') window.open('/board/andon', '_blank')
+                    else toast.info('该看板为占位模板；Andon/线边库存/AGV 调度看板见左侧「终端大屏」菜单')
+                  }}>
                   预览
                 </Button>
                 <Button variant="outline" size="sm" className="h-7 flex-1 text-xs" onClick={() => toast.info('画面发布版本管理：发布需二次确认')}>

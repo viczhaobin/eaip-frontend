@@ -56,6 +56,11 @@ const SysLogs = lazy(() => import('./pages/system/SystemLogs'))
 const SysMonitor = lazy(() => import('./pages/system/RuntimeMonitor'))
 const SysBackup = lazy(() => import('./pages/system/BackupRestore'))
 const SysUpgrade = lazy(() => import('./pages/system/VersionUpgrade'))
+/* 终端大屏（全屏展示，匿名可访问，供 TV/工位机投屏） */
+const AgvStationHmi = lazy(() => import('./pages/boards/AgvStationHmi'))
+const AndonBoard = lazy(() => import('./pages/boards/AndonBoard'))
+const InventoryBoard = lazy(() => import('./pages/boards/InventoryBoard'))
+const AgvMapBoard = lazy(() => import('./pages/boards/AgvMapBoard'))
 /** 登录守卫：无 token → /login?redirect=<当前路径+query> */
 function RequireAuth({ children }: { children: ReactNode }) {
   const location = useLocation()
@@ -141,6 +146,12 @@ export default function App() {
         <Route path="/system/monitor" element={<RequireAuth><SysMonitor /></RequireAuth>} />
         <Route path="/system/backup" element={<RequireAuth><SysBackup /></RequireAuth>} />
         <Route path="/system/upgrade" element={<RequireAuth><SysUpgrade /></RequireAuth>} />
+
+        {/* 终端大屏（全屏投屏，匿名可访问） */}
+        <Route path="/hmi/agv-station" element={<AgvStationHmi />} />
+        <Route path="/board/andon" element={<AndonBoard />} />
+        <Route path="/board/inventory" element={<InventoryBoard />} />
+        <Route path="/board/agv" element={<AgvMapBoard />} />
 
         <Route path="*" element={<Navigate to="/overview/line" replace />} />
       </Routes>

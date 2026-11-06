@@ -2,9 +2,9 @@ import {
   Activity, Archive, ArrowLeftRight, ArrowUpCircle, BadgeCheck, BarChart3, BellRing,
   Binary, Building2, ClipboardList, Cpu, Database, Factory, FileSpreadsheet, FileWarning,
   FlaskConical, Forklift, Gauge, GitBranch, HeartPulse, Inbox, KeyRound, LayoutDashboard,
-  LayoutPanelTop, LineChart, Link2, ListChecks, ListTodo, Megaphone, Monitor, Network,
+  LayoutGrid, LayoutPanelTop, LineChart, Link2, ListChecks, ListTodo, Megaphone, Monitor, Network,
   PackageOpen, Plug, Presentation, Radio, Repeat, ScrollText, SearchCode,
-  Send, SendHorizontal, ServerCog, Settings2, Share2, SlidersHorizontal, Timer, Users,
+  Send, SendHorizontal, ServerCog, Settings2, Share2, SlidersHorizontal, TabletSmartphone, Timer, Users,
   Webhook, Wrench,
   type LucideIcon,
 } from 'lucide-react'
@@ -111,6 +111,15 @@ export const navGroups: NavGroup[] = [
       { to: '/system/monitor', label: '运行监控', icon: Activity },
       { to: '/system/backup', label: '备份恢复', icon: Archive },
       { to: '/system/upgrade', label: '版本升级', icon: ArrowUpCircle },
+    ],
+  },
+  {
+    label: '终端大屏',
+    items: [
+      { to: '/hmi/agv-station', label: 'AGV调度工位HMI', icon: TabletSmartphone },
+      { to: '/board/andon', label: 'Andon 看板', icon: BellRing },
+      { to: '/board/inventory', label: '线边库存看板', icon: LayoutGrid },
+      { to: '/board/agv', label: 'AGV 调度看板', icon: Forklift },
     ],
   },
 ]
